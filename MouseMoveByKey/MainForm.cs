@@ -47,8 +47,9 @@ namespace MouseMoveByKey {
         }
 
         private void btnEditKeyBindings_Click(object sender, EventArgs e) {
-            var keyDialog = new KeyBindingForm();
-            keyDialog.ShowDialog();
+            using(var keyDialog = new KeyBindingForm()) {
+                keyDialog.ShowDialog();
+            }
         }
     }
 }

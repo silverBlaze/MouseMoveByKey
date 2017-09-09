@@ -13,5 +13,14 @@ namespace MouseMoveByKey {
         public KeyBindingForm() {
             InitializeComponent();
         }
+
+        private void btnAddUpKey_Click(object sender, EventArgs e) {
+            using(var getUpKeyPress = new GetKeyPress()) {
+                getUpKeyPress.ShowDialog();
+                if(!getUpKeyPress.Cancelled && !listUpKeys.Items.Contains(getUpKeyPress.KeyPressed)) {
+                    listUpKeys.Items.Add(getUpKeyPress.KeyPressed);
+                }
+            }
+        }
     }
 }

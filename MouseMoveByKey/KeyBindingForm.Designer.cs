@@ -77,6 +77,7 @@
             this.btnAddUpKey.TabIndex = 1;
             this.btnAddUpKey.Text = "Add Key";
             this.btnAddUpKey.UseVisualStyleBackColor = true;
+            this.btnAddUpKey.Click += new System.EventHandler(this.btnAddUpKey_Click);
             // 
             // listUpKeys
             // 

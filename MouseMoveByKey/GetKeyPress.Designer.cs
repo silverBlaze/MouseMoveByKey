@@ -31,15 +31,16 @@
             this.lblKeyPress.AutoSize = true;
             this.lblKeyPress.Location = new System.Drawing.Point(67, 43);
             this.lblKeyPress.Name = "lblKeyPress";
-            this.lblKeyPress.Size = new System.Drawing.Size(232, 25);
+            this.lblKeyPress.Size = new System.Drawing.Size(232, 50);
             this.lblKeyPress.TabIndex = 0;
-            this.lblKeyPress.Text = "Waiting for key press...";
+            this.lblKeyPress.Text = "Waiting for key press...\r\n(Press ESC to cancel)\r\n";
+            this.lblKeyPress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // GetKeyPress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 110);
+            this.ClientSize = new System.Drawing.Size(367, 141);
             this.Controls.Add(this.lblKeyPress);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "GetKeyPress";
