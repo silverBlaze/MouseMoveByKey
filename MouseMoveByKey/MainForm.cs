@@ -44,9 +44,5 @@ namespace MouseMoveByKey {
                 checkKeyDown.Dispose();
             KeyboardHelper.StopLowLevelHook();
         }
-
-        private void sliderSensitivity_Scroll(object sender, EventArgs e) {
-
-        }
     }
 }

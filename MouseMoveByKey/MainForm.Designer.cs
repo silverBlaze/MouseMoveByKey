@@ -40,7 +40,6 @@
             this.sliderSensitivity.Size = new System.Drawing.Size(401, 56);
             this.sliderSensitivity.TabIndex = 0;
             this.sliderSensitivity.Value = 20;
-            this.sliderSensitivity.Scroll += new System.EventHandler(this.sliderSensitivity_Scroll);
             // 
             // lblSensitivity
             // 
