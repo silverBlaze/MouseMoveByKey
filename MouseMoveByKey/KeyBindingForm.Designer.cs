@@ -117,6 +117,7 @@
             this.btnAddDownKeys.TabIndex = 1;
             this.btnAddDownKeys.Text = "Add Key";
             this.btnAddDownKeys.UseVisualStyleBackColor = true;
+            this.btnAddDownKeys.Click += new System.EventHandler(this.btnAddDownKeys_Click);
             // 
             // listDownKeys
             // 
@@ -156,6 +157,7 @@
             this.btnAddRightKey.TabIndex = 1;
             this.btnAddRightKey.Text = "Add Key";
             this.btnAddRightKey.UseVisualStyleBackColor = true;
+            this.btnAddRightKey.Click += new System.EventHandler(this.btnAddRightKey_Click);
             // 
             // listRightKeys
             // 
@@ -195,6 +197,7 @@
             this.btnAddLeftKey.TabIndex = 1;
             this.btnAddLeftKey.Text = "Add Key";
             this.btnAddLeftKey.UseVisualStyleBackColor = true;
+            this.btnAddLeftKey.Click += new System.EventHandler(this.btnAddLeftKey_Click);
             // 
             // listLeftKeys
             // 

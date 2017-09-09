@@ -22,5 +22,32 @@ namespace MouseMoveByKey {
                 }
             }
         }
+
+        private void btnAddDownKeys_Click(object sender, EventArgs e) {
+            using(var getDownKeyPress = new GetKeyPress()) {
+                getDownKeyPress.ShowDialog();
+                if(!getDownKeyPress.Cancelled && !listDownKeys.Items.Contains(getDownKeyPress.KeyPressed)) {
+                    listDownKeys.Items.Add(getDownKeyPress.KeyPressed);
+                }
+            }
+        }
+
+        private void btnAddLeftKey_Click(object sender, EventArgs e) {
+            using(var getLeftKeyPress = new GetKeyPress()) {
+                getLeftKeyPress.ShowDialog();
+                if(!getLeftKeyPress.Cancelled && !listLeftKeys.Items.Contains(getLeftKeyPress.KeyPressed)) {
+                    listLeftKeys.Items.Add(getLeftKeyPress.KeyPressed);
+                }
+            }
+        }
+
+        private void btnAddRightKey_Click(object sender, EventArgs e) {
+            using(var getRightKeyPress = new GetKeyPress()) {
+                getRightKeyPress.ShowDialog();
+                if(!getRightKeyPress.Cancelled && !listRightKeys.Items.Contains(getRightKeyPress.KeyPressed)) {
+                    listRightKeys.Items.Add(getRightKeyPress.KeyPressed);
+                }
+            }
+        }
     }
 }
