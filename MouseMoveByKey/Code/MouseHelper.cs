@@ -7,18 +7,18 @@ namespace MouseMoveByKey {
         private const uint MOUSEEVENTF_MOVE = 0x0001;
         private static int _moveFactor = 2;
 
-        public static void MoveMouse(MouseMoveDirection direction, int magnitude) {
+        public static void MoveMouse(MoveDirection direction, int magnitude) {
             switch(direction) {
-                case MouseMoveDirection.Left:
+                case MoveDirection.Left:
                     mouse_event(MOUSEEVENTF_MOVE, -1 * _moveFactor * magnitude, 0, 0, (UIntPtr)0);
                     return;
-                case MouseMoveDirection.Right:
+                case MoveDirection.Right:
                     mouse_event(MOUSEEVENTF_MOVE, 1 * _moveFactor * magnitude, 0, 0, (UIntPtr)0);
                     return;
-                case MouseMoveDirection.Up:
+                case MoveDirection.Up:
                     mouse_event(MOUSEEVENTF_MOVE, 0, -1 * _moveFactor * magnitude, 0, (UIntPtr)0);
                     return;
-                case MouseMoveDirection.Down:
+                case MoveDirection.Down:
                     mouse_event(MOUSEEVENTF_MOVE, 0, 1 * _moveFactor * magnitude, 0, (UIntPtr)0);
                     return;
             }

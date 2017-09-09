@@ -15,6 +15,13 @@ namespace MouseMoveByKey {
         public static bool UpPressed { get; set; } = false;
         public static bool DownPressed { get; set; } = false;
 
+        private static Keys leftKeyPressed;
+        private static Keys rightKeyPressed;
+        private static Keys upKeyPressed;
+        private static Keys downKeyPressed;
+
+        public static KeyBindings CurrentKeyBindings { get; set; } = new KeyBindings();
+
         private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 
         private static LowLevelKeyboardProc _proc = HookCallback;
@@ -32,19 +39,47 @@ namespace MouseMoveByKey {
             if(nCode >= 0) {
                 int vkCode = Marshal.ReadInt32(lParam);
                 if(wParam == (IntPtr)WM_KEYDOWN) {
-                    LeftPressed = ((Keys)vkCode == Keys.Left);
-                    RightPressed = ((Keys)vkCode == Keys.Right);
-                    UpPressed = ((Keys)vkCode == Keys.PageUp);
-                    DownPressed = ((Keys)vkCode == Keys.PageDown);
+                    foreach(var key in CurrentKeyBindings.LeftKeyBindings) {
+                        if((Keys)vkCode == key) {
+                            LeftPressed = true;
+                            leftKeyPressed = key;
+                            break;
+                        }
+                    }
+                    foreach(var key in CurrentKeyBindings.RightKeyBindings) {
+                        if((Keys)vkCode == key) {
+                            RightPressed = true;
+                            rightKeyPressed = key;
+                            break;
+                        }
+                    }
+                    foreach(var key in CurrentKeyBindings.UpKeyBindings) {
+                        if((Keys)vkCode == key) {
+                            UpPressed = true;
+                            upKeyPressed = key;
+                            break;
+                        }
+                    }
+                    foreach(var key in CurrentKeyBindings.DownKeyBindings) {
+                        if((Keys)vkCode == key) {
+                            DownPressed = true;
+                            downKeyPressed = key;
+                            break;
+                        }
+                    }
                 } else if(wParam == (IntPtr)WM_KEYUP) {
-                    if((Keys)vkCode == Keys.Left) {
+                    if((Keys)vkCode == leftKeyPressed) {
                         LeftPressed = false;
-                    } else if((Keys)vkCode == Keys.Right) {
+                        leftKeyPressed = Keys.None;
+                    } else if((Keys)vkCode == rightKeyPressed) {
                         RightPressed = false;
-                    } else if((Keys)vkCode == Keys.PageUp) {
+                        rightKeyPressed = Keys.None;
+                    } else if((Keys)vkCode == upKeyPressed) {
                         UpPressed = false;
-                    } else if((Keys)vkCode == Keys.PageDown) {
+                        upKeyPressed = Keys.None;
+                    } else if((Keys)vkCode == downKeyPressed) {
                         DownPressed = false;
+                        downKeyPressed = Keys.None;
                     }
                 }
             }

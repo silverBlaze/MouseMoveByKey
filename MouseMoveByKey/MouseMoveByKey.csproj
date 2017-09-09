@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\ConfigHelper.cs" />
+    <Compile Include="Code\KeyBindings.cs" />
     <Compile Include="Code\KeyboardHelper.cs" />
+    <Compile Include="Code\MouseSettings.cs" />
+    <Compile Include="GetKeyPress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetKeyPress.Designer.cs">
+      <DependentUpon>GetKeyPress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeyBindingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyBindingForm.Designer.cs">
+      <DependentUpon>KeyBindingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,9 +70,15 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\MouseHelper.cs" />
-    <Compile Include="Code\MouseMoveDirection.cs" />
+    <Compile Include="Code\MoveDirection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GetKeyPress.resx">
+      <DependentUpon>GetKeyPress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeyBindingForm.resx">
+      <DependentUpon>KeyBindingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -69,6 +91,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="KeyBindings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MouseSettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

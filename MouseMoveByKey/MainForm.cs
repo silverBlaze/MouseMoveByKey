@@ -5,12 +5,19 @@ namespace MouseMoveByKey {
     public partial class MainForm : Form {
 
         private Timer checkKeyDown = null;
-        
+
         public MainForm() {
             InitializeComponent();
         }
         
         private void MainForm_Load(object sender, EventArgs e) {
+            //load the key bindings from the current JSON config, if any
+            KeyboardHelper.CurrentKeyBindings = ConfigHelper.LoadKeyBindingsFromConfig();
+
+            //load mouse settings from current JSON config, if any
+            var mouseSettings = ConfigHelper.LoadMouseSettingsFromConfig();
+            sliderSensitivity.Value = mouseSettings.Sensitivity;
+
             //setup low level keyboard hook to detect keypresses
             KeyboardHelper.StartLowLevelHook();
 
@@ -22,21 +29,22 @@ namespace MouseMoveByKey {
         }
 
         private void CheckKeyDown_Tick(object sender, EventArgs e) {
-            if(chkActivateLeftRight.Checked) {
+            if(chkActivate.Checked) {
                 if(KeyboardHelper.LeftPressed) {
-                    MouseHelper.MoveMouse(MouseMoveDirection.Left, sliderSensitivity.Value);
+                    MouseHelper.MoveMouse(MoveDirection.Left, sliderSensitivity.Value);
                 } else if(KeyboardHelper.RightPressed) {
-                    MouseHelper.MoveMouse(MouseMoveDirection.Right, sliderSensitivity.Value);
+                    MouseHelper.MoveMouse(MoveDirection.Right, sliderSensitivity.Value);
                 } else if(KeyboardHelper.UpPressed) {
-                    MouseHelper.MoveMouse(MouseMoveDirection.Up, sliderSensitivity.Value);
+                    MouseHelper.MoveMouse(MoveDirection.Up, sliderSensitivity.Value);
                 } else if(KeyboardHelper.DownPressed) {
-                    MouseHelper.MoveMouse(MouseMoveDirection.Down, sliderSensitivity.Value);
+                    MouseHelper.MoveMouse(MoveDirection.Down, sliderSensitivity.Value);
                 }
             }
         }
         
-        private void chkActivateLeftRight_CheckedChanged(object sender, EventArgs e) {
-            sliderSensitivity.Enabled = (!chkActivateLeftRight.Checked);
+        private void chkActivate_CheckedChanged(object sender, EventArgs e) {
+            sliderSensitivity.Enabled = (!chkActivate.Checked);
+            btnEditKeyBindings.Enabled = (!chkActivate.Checked);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e) {
@@ -45,8 +53,18 @@ namespace MouseMoveByKey {
             KeyboardHelper.StopLowLevelHook();
         }
 
-        private void sliderSensitivity_Scroll(object sender, EventArgs e) {
+        private void btnEditKeyBindings_Click(object sender, EventArgs e) {
+            using(var keyDialog = new KeyBindingForm()) {
+                keyDialog.KeyBindings = KeyboardHelper.CurrentKeyBindings;
+                keyDialog.ShowDialog();
+                KeyboardHelper.CurrentKeyBindings = keyDialog.KeyBindings;
+                //save the config file with the new bindings
+                ConfigHelper.SaveKeyBindingsToConfig(KeyboardHelper.CurrentKeyBindings);
+            }
+        }
 
+        private void sliderSensitivity_Scroll(object sender, EventArgs e) {
+            ConfigHelper.SaveMouseSettingsToConfig(new MouseSettings { Sensitivity = sliderSensitivity.Value });
         }
     }
 }
