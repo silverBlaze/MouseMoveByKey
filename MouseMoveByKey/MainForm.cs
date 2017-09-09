@@ -22,7 +22,7 @@ namespace MouseMoveByKey {
         }
 
         private void CheckKeyDown_Tick(object sender, EventArgs e) {
-            if(chkActivateLeftRight.Checked) {
+            if(chkActivate.Checked) {
                 if(KeyboardHelper.LeftPressed) {
                     MouseHelper.MoveMouse(MoveDirection.Left, sliderSensitivity.Value);
                 } else if(KeyboardHelper.RightPressed) {
@@ -36,13 +36,19 @@ namespace MouseMoveByKey {
         }
         
         private void chkActivateLeftRight_CheckedChanged(object sender, EventArgs e) {
-            sliderSensitivity.Enabled = (!chkActivateLeftRight.Checked);
+            sliderSensitivity.Enabled = (!chkActivate.Checked);
+            btnEditKeyBindings.Enabled = (!chkActivate.Checked);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e) {
             if(checkKeyDown != null)
                 checkKeyDown.Dispose();
             KeyboardHelper.StopLowLevelHook();
+        }
+
+        private void btnEditKeyBindings_Click(object sender, EventArgs e) {
+            var keyDialog = new KeyBindingForm();
+            keyDialog.ShowDialog();
         }
     }
 }
