@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\KeyBindings.cs" />
     <Compile Include="Code\KeyboardHelper.cs" />
     <Compile Include="GetKeyPress.cs">
       <SubType>Form</SubType>

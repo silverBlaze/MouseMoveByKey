@@ -230,6 +230,7 @@
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save Changes";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblDescription
             // 
@@ -258,6 +259,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "KeyBindingForm";
             this.Text = "Assign Key Bindings";
+            this.Load += new System.EventHandler(this.KeyBindingForm_Load);
             this.groupUpKeys.ResumeLayout(false);
             this.groupDownKeys.ResumeLayout(false);
             this.groupRightKeys.ResumeLayout(false);

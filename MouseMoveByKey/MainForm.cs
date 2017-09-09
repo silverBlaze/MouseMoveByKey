@@ -5,7 +5,9 @@ namespace MouseMoveByKey {
     public partial class MainForm : Form {
 
         private Timer checkKeyDown = null;
-        
+
+        private KeyBindings keyBindings = new KeyBindings();
+
         public MainForm() {
             InitializeComponent();
         }
@@ -48,7 +50,9 @@ namespace MouseMoveByKey {
 
         private void btnEditKeyBindings_Click(object sender, EventArgs e) {
             using(var keyDialog = new KeyBindingForm()) {
+                keyDialog.CurrentKeyBindings = keyBindings;
                 keyDialog.ShowDialog();
+                keyBindings = keyDialog.CurrentKeyBindings;
             }
         }
     }
