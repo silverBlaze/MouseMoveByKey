@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.sliderSensitivity = new System.Windows.Forms.TrackBar();
             this.lblSensitivity = new System.Windows.Forms.Label();
             this.chkActivate = new System.Windows.Forms.CheckBox();
@@ -101,6 +102,7 @@
             this.Controls.Add(this.groupSettings);
             this.Controls.Add(this.chkActivate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "MainForm";
