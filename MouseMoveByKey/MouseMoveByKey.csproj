@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\KeyboardHelper.cs" />
+    <Compile Include="KeyBindingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyBindingForm.Designer.cs">
+      <DependentUpon>KeyBindingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,9 @@
     <Compile Include="Code\MoveDirection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="KeyBindingForm.resx">
+      <DependentUpon>KeyBindingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
