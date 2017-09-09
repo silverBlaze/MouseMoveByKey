@@ -50,6 +50,7 @@
     <Compile Include="Code\ConfigHelper.cs" />
     <Compile Include="Code\KeyBindings.cs" />
     <Compile Include="Code\KeyboardHelper.cs" />
+    <Compile Include="Code\MouseSettings.cs" />
     <Compile Include="GetKeyPress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +92,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="KeyBindings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MouseSettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">

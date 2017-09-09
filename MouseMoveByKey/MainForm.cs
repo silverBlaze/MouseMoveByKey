@@ -14,6 +14,10 @@ namespace MouseMoveByKey {
             //load the key bindings from the current JSON config, if any
             KeyboardHelper.CurrentKeyBindings = ConfigHelper.LoadKeyBindingsFromConfig();
 
+            //load mouse settings from current JSON config, if any
+            var mouseSettings = ConfigHelper.LoadMouseSettingsFromConfig();
+            sliderSensitivity.Value = mouseSettings.Sensitivity;
+
             //setup low level keyboard hook to detect keypresses
             KeyboardHelper.StartLowLevelHook();
 
@@ -38,7 +42,7 @@ namespace MouseMoveByKey {
             }
         }
         
-        private void chkActivateLeftRight_CheckedChanged(object sender, EventArgs e) {
+        private void chkActivate_CheckedChanged(object sender, EventArgs e) {
             sliderSensitivity.Enabled = (!chkActivate.Checked);
             btnEditKeyBindings.Enabled = (!chkActivate.Checked);
         }
@@ -57,6 +61,10 @@ namespace MouseMoveByKey {
                 //save the config file with the new bindings
                 ConfigHelper.SaveKeyBindingsToConfig(KeyboardHelper.CurrentKeyBindings);
             }
+        }
+
+        private void sliderSensitivity_Scroll(object sender, EventArgs e) {
+            ConfigHelper.SaveMouseSettingsToConfig(new MouseSettings { Sensitivity = sliderSensitivity.Value });
         }
     }
 }

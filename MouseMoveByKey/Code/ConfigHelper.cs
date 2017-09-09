@@ -25,5 +25,27 @@ namespace MouseMoveByKey {
             var json = serializer.Serialize(keyBindings);
             File.WriteAllText("KeyBindings.json", json);
         }
+
+        public static MouseSettings LoadMouseSettingsFromConfig() {
+            var serializer = new JavaScriptSerializer();
+
+            FileInfo jsonFile = new FileInfo("MouseSettings.json");
+            if(jsonFile.Exists) {
+                try {
+                    string json = File.ReadAllText(jsonFile.FullName);
+                    var settings = serializer.Deserialize<MouseSettings>(json);
+                    return settings;
+                } catch {
+                    MessageBox.Show("Unable to load MouseSettings.json. Starting with default settings.", "Error Loading MouseSettings", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return new MouseSettings();
+        }
+
+        public static void SaveMouseSettingsToConfig(MouseSettings mouseSettings) {
+            var serializer = new JavaScriptSerializer();
+            var json = serializer.Serialize(mouseSettings);
+            File.WriteAllText("MouseSettings.json", json);
+        }
     }
 }
