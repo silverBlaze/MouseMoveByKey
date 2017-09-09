@@ -9,7 +9,6 @@ namespace MouseMoveByKey {
         private const int WH_KEYBOARD_LL = 13;
         private const int WM_KEYDOWN = 0x0100;
         private const int WM_KEYUP = 0x0101;
-        private const uint MOUSEEVENTF_MOVE = 0x0001;
 
         private static LowLevelKeyboardProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
@@ -23,7 +22,6 @@ namespace MouseMoveByKey {
         private static bool _rightPressed = false;
         private static bool _upPressed = false;
         private static bool _downPressed = false;
-        private int _moveFactor = 2;
         
         private void MainForm_Load(object sender, EventArgs e) {
             //setup low level keyboard hook to detect keypresses
@@ -39,13 +37,13 @@ namespace MouseMoveByKey {
         private void CheckKeyDown_Tick(object sender, EventArgs e) {
             if(chkActivateLeftRight.Checked) {
                 if(_leftPressed) {
-                    mouse_event(MOUSEEVENTF_MOVE, -1 * _moveFactor * sliderSensitivity.Value, 0, 0, (UIntPtr)0);
+                    MouseHelper.MoveMouse(MouseMoveDirection.Left, sliderSensitivity.Value);
                 } else if(_rightPressed) {
-                    mouse_event(MOUSEEVENTF_MOVE, 1 * _moveFactor * sliderSensitivity.Value, 0, 0, (UIntPtr)0);
+                    MouseHelper.MoveMouse(MouseMoveDirection.Right, sliderSensitivity.Value);
                 } else if(_upPressed) {
-                    mouse_event(MOUSEEVENTF_MOVE, 0, -1 * _moveFactor * sliderSensitivity.Value, 0, (UIntPtr)0);
+                    MouseHelper.MoveMouse(MouseMoveDirection.Up, sliderSensitivity.Value);
                 } else if(_downPressed) {
-                    mouse_event(MOUSEEVENTF_MOVE, 0, 1 * _moveFactor * sliderSensitivity.Value, 0, (UIntPtr)0);
+                    MouseHelper.MoveMouse(MouseMoveDirection.Down, sliderSensitivity.Value);
                 }
             }
         }
@@ -103,9 +101,6 @@ namespace MouseMoveByKey {
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
-
-        [DllImport("user32.dll")]
-        private static extern void mouse_event(uint dwFlags, int dx, int dy, uint dwData, UIntPtr dwExtraInfo);
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern IntPtr GetModuleHandle(string lpModuleName);
