@@ -11,6 +11,9 @@ namespace MouseMoveByKey {
         }
         
         private void MainForm_Load(object sender, EventArgs e) {
+            //load the key bindings from the current JSON config, if any
+            KeyboardHelper.CurrentKeyBindings = ConfigHelper.LoadKeyBindingsFromConfig();
+
             //setup low level keyboard hook to detect keypresses
             KeyboardHelper.StartLowLevelHook();
 
@@ -51,6 +54,8 @@ namespace MouseMoveByKey {
                 keyDialog.KeyBindings = KeyboardHelper.CurrentKeyBindings;
                 keyDialog.ShowDialog();
                 KeyboardHelper.CurrentKeyBindings = keyDialog.KeyBindings;
+                //save the config file with the new bindings
+                ConfigHelper.SaveKeyBindingsToConfig(KeyboardHelper.CurrentKeyBindings);
             }
         }
     }
