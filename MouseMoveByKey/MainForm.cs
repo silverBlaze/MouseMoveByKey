@@ -24,13 +24,13 @@ namespace MouseMoveByKey {
         private void CheckKeyDown_Tick(object sender, EventArgs e) {
             if(chkActivateLeftRight.Checked) {
                 if(KeyboardHelper.LeftPressed) {
-                    MouseHelper.MoveMouse(MouseMoveDirection.Left, sliderSensitivity.Value);
+                    MouseHelper.MoveMouse(MoveDirection.Left, sliderSensitivity.Value);
                 } else if(KeyboardHelper.RightPressed) {
-                    MouseHelper.MoveMouse(MouseMoveDirection.Right, sliderSensitivity.Value);
+                    MouseHelper.MoveMouse(MoveDirection.Right, sliderSensitivity.Value);
                 } else if(KeyboardHelper.UpPressed) {
-                    MouseHelper.MoveMouse(MouseMoveDirection.Up, sliderSensitivity.Value);
+                    MouseHelper.MoveMouse(MoveDirection.Up, sliderSensitivity.Value);
                 } else if(KeyboardHelper.DownPressed) {
-                    MouseHelper.MoveMouse(MouseMoveDirection.Down, sliderSensitivity.Value);
+                    MouseHelper.MoveMouse(MoveDirection.Down, sliderSensitivity.Value);
                 }
             }
         }
