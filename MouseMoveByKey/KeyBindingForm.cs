@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MouseMoveByKey {
@@ -14,40 +7,53 @@ namespace MouseMoveByKey {
             InitializeComponent();
         }
 
-        private void btnAddUpKey_Click(object sender, EventArgs e) {
-            using(var getUpKeyPress = new GetKeyPress()) {
-                getUpKeyPress.ShowDialog();
-                if(!getUpKeyPress.Cancelled && !listUpKeys.Items.Contains(getUpKeyPress.KeyPressed)) {
-                    listUpKeys.Items.Add(getUpKeyPress.KeyPressed);
+        private void AddKey(ListBox list) {
+            using(var getKeyPress = new GetKeyPress()) {
+                getKeyPress.ShowDialog();
+                if(!getKeyPress.Cancelled && !list.Items.Contains(getKeyPress.KeyPressed)) {
+                    list.Items.Add(getKeyPress.KeyPressed);
+                    list.SelectedItem = null;
                 }
             }
+        }
+
+        private void RemoveKey(ListBox list) {
+            if(list.SelectedItem != null)
+                list.Items.Remove(list.SelectedItem);
+            else
+                MessageBox.Show("You must first select a key to remove", "No Key Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void btnAddUpKey_Click(object sender, EventArgs e) {
+            AddKey(listUpKeys);
         }
 
         private void btnAddDownKeys_Click(object sender, EventArgs e) {
-            using(var getDownKeyPress = new GetKeyPress()) {
-                getDownKeyPress.ShowDialog();
-                if(!getDownKeyPress.Cancelled && !listDownKeys.Items.Contains(getDownKeyPress.KeyPressed)) {
-                    listDownKeys.Items.Add(getDownKeyPress.KeyPressed);
-                }
-            }
+            AddKey(listDownKeys);
         }
 
         private void btnAddLeftKey_Click(object sender, EventArgs e) {
-            using(var getLeftKeyPress = new GetKeyPress()) {
-                getLeftKeyPress.ShowDialog();
-                if(!getLeftKeyPress.Cancelled && !listLeftKeys.Items.Contains(getLeftKeyPress.KeyPressed)) {
-                    listLeftKeys.Items.Add(getLeftKeyPress.KeyPressed);
-                }
-            }
+            AddKey(listLeftKeys);
         }
 
         private void btnAddRightKey_Click(object sender, EventArgs e) {
-            using(var getRightKeyPress = new GetKeyPress()) {
-                getRightKeyPress.ShowDialog();
-                if(!getRightKeyPress.Cancelled && !listRightKeys.Items.Contains(getRightKeyPress.KeyPressed)) {
-                    listRightKeys.Items.Add(getRightKeyPress.KeyPressed);
-                }
-            }
+            AddKey(listRightKeys);
+        }
+
+        private void btnClearUpKey_Click(object sender, EventArgs e) {
+            RemoveKey(listUpKeys);
+        }
+
+        private void btnClearDownKey_Click(object sender, EventArgs e) {
+            RemoveKey(listDownKeys);
+        }
+
+        private void btnClearLeftKey_Click(object sender, EventArgs e) {
+            RemoveKey(listLeftKeys);
+        }
+
+        private void btnClearRightKey_Click(object sender, EventArgs e) {
+            RemoveKey(listRightKeys);
         }
     }
 }

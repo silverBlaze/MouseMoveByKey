@@ -24,19 +24,19 @@
         /// </summary>
         private void InitializeComponent() {
             this.groupUpKeys = new System.Windows.Forms.GroupBox();
-            this.btnClearUpKeys = new System.Windows.Forms.Button();
+            this.btnClearUpKey = new System.Windows.Forms.Button();
             this.btnAddUpKey = new System.Windows.Forms.Button();
             this.listUpKeys = new System.Windows.Forms.ListBox();
             this.groupDownKeys = new System.Windows.Forms.GroupBox();
-            this.btnClearDownKeys = new System.Windows.Forms.Button();
+            this.btnClearDownKey = new System.Windows.Forms.Button();
             this.btnAddDownKeys = new System.Windows.Forms.Button();
             this.listDownKeys = new System.Windows.Forms.ListBox();
             this.groupRightKeys = new System.Windows.Forms.GroupBox();
-            this.btnClearRightKeys = new System.Windows.Forms.Button();
+            this.btnClearRightKey = new System.Windows.Forms.Button();
             this.btnAddRightKey = new System.Windows.Forms.Button();
             this.listRightKeys = new System.Windows.Forms.ListBox();
             this.groupLeftKeys = new System.Windows.Forms.GroupBox();
-            this.btnClearLeftKeys = new System.Windows.Forms.Button();
+            this.btnClearLeftKey = new System.Windows.Forms.Button();
             this.btnAddLeftKey = new System.Windows.Forms.Button();
             this.listLeftKeys = new System.Windows.Forms.ListBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             // 
             // groupUpKeys
             // 
-            this.groupUpKeys.Controls.Add(this.btnClearUpKeys);
+            this.groupUpKeys.Controls.Add(this.btnClearUpKey);
             this.groupUpKeys.Controls.Add(this.btnAddUpKey);
             this.groupUpKeys.Controls.Add(this.listUpKeys);
             this.groupUpKeys.Location = new System.Drawing.Point(12, 108);
@@ -60,14 +60,15 @@
             this.groupUpKeys.TabStop = false;
             this.groupUpKeys.Text = "Move Mouse UP Keys";
             // 
-            // btnClearUpKeys
+            // btnClearUpKey
             // 
-            this.btnClearUpKeys.Location = new System.Drawing.Point(271, 105);
-            this.btnClearUpKeys.Name = "btnClearUpKeys";
-            this.btnClearUpKeys.Size = new System.Drawing.Size(151, 60);
-            this.btnClearUpKeys.TabIndex = 1;
-            this.btnClearUpKeys.Text = "Clear Keys";
-            this.btnClearUpKeys.UseVisualStyleBackColor = true;
+            this.btnClearUpKey.Location = new System.Drawing.Point(271, 105);
+            this.btnClearUpKey.Name = "btnClearUpKey";
+            this.btnClearUpKey.Size = new System.Drawing.Size(151, 60);
+            this.btnClearUpKey.TabIndex = 1;
+            this.btnClearUpKey.Text = "Remove Key";
+            this.btnClearUpKey.UseVisualStyleBackColor = true;
+            this.btnClearUpKey.Click += new System.EventHandler(this.btnClearUpKey_Click);
             // 
             // btnAddUpKey
             // 
@@ -90,7 +91,7 @@
             // 
             // groupDownKeys
             // 
-            this.groupDownKeys.Controls.Add(this.btnClearDownKeys);
+            this.groupDownKeys.Controls.Add(this.btnClearDownKey);
             this.groupDownKeys.Controls.Add(this.btnAddDownKeys);
             this.groupDownKeys.Controls.Add(this.listDownKeys);
             this.groupDownKeys.Location = new System.Drawing.Point(460, 108);
@@ -100,14 +101,15 @@
             this.groupDownKeys.TabStop = false;
             this.groupDownKeys.Text = "Move Mouse DOWN Keys";
             // 
-            // btnClearDownKeys
+            // btnClearDownKey
             // 
-            this.btnClearDownKeys.Location = new System.Drawing.Point(271, 105);
-            this.btnClearDownKeys.Name = "btnClearDownKeys";
-            this.btnClearDownKeys.Size = new System.Drawing.Size(151, 60);
-            this.btnClearDownKeys.TabIndex = 1;
-            this.btnClearDownKeys.Text = "Clear Keys";
-            this.btnClearDownKeys.UseVisualStyleBackColor = true;
+            this.btnClearDownKey.Location = new System.Drawing.Point(271, 105);
+            this.btnClearDownKey.Name = "btnClearDownKey";
+            this.btnClearDownKey.Size = new System.Drawing.Size(151, 60);
+            this.btnClearDownKey.TabIndex = 1;
+            this.btnClearDownKey.Text = "Remove Key";
+            this.btnClearDownKey.UseVisualStyleBackColor = true;
+            this.btnClearDownKey.Click += new System.EventHandler(this.btnClearDownKey_Click);
             // 
             // btnAddDownKeys
             // 
@@ -130,7 +132,7 @@
             // 
             // groupRightKeys
             // 
-            this.groupRightKeys.Controls.Add(this.btnClearRightKeys);
+            this.groupRightKeys.Controls.Add(this.btnClearRightKey);
             this.groupRightKeys.Controls.Add(this.btnAddRightKey);
             this.groupRightKeys.Controls.Add(this.listRightKeys);
             this.groupRightKeys.Location = new System.Drawing.Point(459, 313);
@@ -140,14 +142,15 @@
             this.groupRightKeys.TabStop = false;
             this.groupRightKeys.Text = "Move Mouse RIGHT Keys";
             // 
-            // btnClearRightKeys
+            // btnClearRightKey
             // 
-            this.btnClearRightKeys.Location = new System.Drawing.Point(271, 105);
-            this.btnClearRightKeys.Name = "btnClearRightKeys";
-            this.btnClearRightKeys.Size = new System.Drawing.Size(151, 60);
-            this.btnClearRightKeys.TabIndex = 1;
-            this.btnClearRightKeys.Text = "Clear Keys";
-            this.btnClearRightKeys.UseVisualStyleBackColor = true;
+            this.btnClearRightKey.Location = new System.Drawing.Point(271, 105);
+            this.btnClearRightKey.Name = "btnClearRightKey";
+            this.btnClearRightKey.Size = new System.Drawing.Size(151, 60);
+            this.btnClearRightKey.TabIndex = 1;
+            this.btnClearRightKey.Text = "Remove Key";
+            this.btnClearRightKey.UseVisualStyleBackColor = true;
+            this.btnClearRightKey.Click += new System.EventHandler(this.btnClearRightKey_Click);
             // 
             // btnAddRightKey
             // 
@@ -170,7 +173,7 @@
             // 
             // groupLeftKeys
             // 
-            this.groupLeftKeys.Controls.Add(this.btnClearLeftKeys);
+            this.groupLeftKeys.Controls.Add(this.btnClearLeftKey);
             this.groupLeftKeys.Controls.Add(this.btnAddLeftKey);
             this.groupLeftKeys.Controls.Add(this.listLeftKeys);
             this.groupLeftKeys.Location = new System.Drawing.Point(11, 313);
@@ -180,14 +183,15 @@
             this.groupLeftKeys.TabStop = false;
             this.groupLeftKeys.Text = "Move Mouse LEFT Keys";
             // 
-            // btnClearLeftKeys
+            // btnClearLeftKey
             // 
-            this.btnClearLeftKeys.Location = new System.Drawing.Point(271, 105);
-            this.btnClearLeftKeys.Name = "btnClearLeftKeys";
-            this.btnClearLeftKeys.Size = new System.Drawing.Size(151, 60);
-            this.btnClearLeftKeys.TabIndex = 1;
-            this.btnClearLeftKeys.Text = "Clear Keys";
-            this.btnClearLeftKeys.UseVisualStyleBackColor = true;
+            this.btnClearLeftKey.Location = new System.Drawing.Point(271, 105);
+            this.btnClearLeftKey.Name = "btnClearLeftKey";
+            this.btnClearLeftKey.Size = new System.Drawing.Size(151, 60);
+            this.btnClearLeftKey.TabIndex = 1;
+            this.btnClearLeftKey.Text = "Remove Key";
+            this.btnClearLeftKey.UseVisualStyleBackColor = true;
+            this.btnClearLeftKey.Click += new System.EventHandler(this.btnClearLeftKey_Click);
             // 
             // btnAddLeftKey
             // 
@@ -232,10 +236,10 @@
             this.lblDescription.AutoSize = true;
             this.lblDescription.Location = new System.Drawing.Point(13, 24);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(840, 50);
+            this.lblDescription.Size = new System.Drawing.Size(836, 50);
             this.lblDescription.TabIndex = 7;
-            this.lblDescription.Text = "Add keys to a Mouse Move direction, or clear all keys. Click Save Changes to save" +
-    " all \r\nchanges, or Cancel to abandon your changes.";
+            this.lblDescription.Text = "Add keys to a Mouse Move direction, or remove keys. Click Save Changes to save al" +
+    "l \r\nchanges, or Cancel to abandon your changes.";
             // 
             // KeyBindingForm
             // 
@@ -266,19 +270,19 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupUpKeys;
-        private System.Windows.Forms.Button btnClearUpKeys;
+        private System.Windows.Forms.Button btnClearUpKey;
         private System.Windows.Forms.Button btnAddUpKey;
         private System.Windows.Forms.ListBox listUpKeys;
         private System.Windows.Forms.GroupBox groupDownKeys;
-        private System.Windows.Forms.Button btnClearDownKeys;
+        private System.Windows.Forms.Button btnClearDownKey;
         private System.Windows.Forms.Button btnAddDownKeys;
         private System.Windows.Forms.ListBox listDownKeys;
         private System.Windows.Forms.GroupBox groupRightKeys;
-        private System.Windows.Forms.Button btnClearRightKeys;
+        private System.Windows.Forms.Button btnClearRightKey;
         private System.Windows.Forms.Button btnAddRightKey;
         private System.Windows.Forms.ListBox listRightKeys;
         private System.Windows.Forms.GroupBox groupLeftKeys;
-        private System.Windows.Forms.Button btnClearLeftKeys;
+        private System.Windows.Forms.Button btnClearLeftKey;
         private System.Windows.Forms.Button btnAddLeftKey;
         private System.Windows.Forms.ListBox listLeftKeys;
         private System.Windows.Forms.Button btnCancel;
