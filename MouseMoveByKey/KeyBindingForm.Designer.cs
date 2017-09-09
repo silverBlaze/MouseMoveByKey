@@ -258,6 +258,7 @@
             this.Controls.Add(this.groupUpKeys);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "KeyBindingForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Assign Key Bindings";
             this.Load += new System.EventHandler(this.KeyBindingForm_Load);
             this.groupUpKeys.ResumeLayout(false);
