@@ -15,6 +15,8 @@ namespace MouseMoveByKey {
         public static bool UpPressed { get; set; } = false;
         public static bool DownPressed { get; set; } = false;
 
+        public static KeyBindings CurrentKeyBindings { get; set; } = new KeyBindings();
+
         private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 
         private static LowLevelKeyboardProc _proc = HookCallback;

@@ -5,25 +5,25 @@ using System.Windows.Forms;
 namespace MouseMoveByKey {
     public partial class KeyBindingForm : Form {
 
-        public KeyBindings CurrentKeyBindings { get; set; }
+        public KeyBindings KeyBindings { get; set; }
 
         public KeyBindingForm() {
             InitializeComponent();
         }
 
         private void LoadFromKeyBindings() {
-            CurrentKeyBindings.UpKeyBindings.ForEach(k => listUpKeys.Items.Add(k));
-            CurrentKeyBindings.DownKeyBindings.ForEach(k => listDownKeys.Items.Add(k));
-            CurrentKeyBindings.LeftKeyBindings.ForEach(k => listLeftKeys.Items.Add(k));
-            CurrentKeyBindings.RightKeyBindings.ForEach(k => listRightKeys.Items.Add(k));
+            KeyBindings.UpKeyBindings.ForEach(k => listUpKeys.Items.Add(k));
+            KeyBindings.DownKeyBindings.ForEach(k => listDownKeys.Items.Add(k));
+            KeyBindings.LeftKeyBindings.ForEach(k => listLeftKeys.Items.Add(k));
+            KeyBindings.RightKeyBindings.ForEach(k => listRightKeys.Items.Add(k));
         }
 
         private void SaveKeyBindings() {
-            CurrentKeyBindings = new KeyBindings();
-            CurrentKeyBindings.UpKeyBindings = listUpKeys.Items.Cast<Keys>().ToList();
-            CurrentKeyBindings.DownKeyBindings = listDownKeys.Items.Cast<Keys>().ToList();
-            CurrentKeyBindings.LeftKeyBindings = listLeftKeys.Items.Cast<Keys>().ToList();
-            CurrentKeyBindings.RightKeyBindings = listRightKeys.Items.Cast<Keys>().ToList();
+            KeyBindings = new KeyBindings();
+            KeyBindings.UpKeyBindings = listUpKeys.Items.Cast<Keys>().ToList();
+            KeyBindings.DownKeyBindings = listDownKeys.Items.Cast<Keys>().ToList();
+            KeyBindings.LeftKeyBindings = listLeftKeys.Items.Cast<Keys>().ToList();
+            KeyBindings.RightKeyBindings = listRightKeys.Items.Cast<Keys>().ToList();
         }
 
         private void AddKey(ListBox list) {
